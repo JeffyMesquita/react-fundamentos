@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "babel src -d transpiled && webpack"
+    "build": "webpack"
   },
   "keywords": [],
   "author": "",
