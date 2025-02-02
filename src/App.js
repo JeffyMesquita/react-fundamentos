@@ -1,11 +1,14 @@
 import React from 'react';
 
 import Post from './Post';
+import Header from './Header';
 
 function App() {
   return (
     <>
-      <h1>JStacks's Blog</h1>
+      <Header title="JStack's Blog">
+        <h2>Posts da semana</h2>
+      </Header>
 
       <hr />
 
