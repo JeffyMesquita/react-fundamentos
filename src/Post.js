@@ -3,8 +3,8 @@ import PropTypes from 'prop-types';
 
 /**
  *
- * @param {*} props
- * @returns  Post component
+ * @param {*} props - PostProps object with the post object and number of likes
+ * @returns  Post component with the post title, subtitle and number of likes
  *
  * @example
  * <Post post={{ title: 'Título da notícia', subtitle: 'subtitulo da notícia' }} likes={20} />

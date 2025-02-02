@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import Post from './Post';
 import Header from './Header';
@@ -22,15 +22,33 @@ const POSTS = [
 ];
 
 function App() {
+  const [posts, setPosts] = useState(POSTS);
+
+  function handleRefresh() {
+    setTimeout(() => {
+      setPosts((prevState) => [
+        ...prevState,
+        {
+          title: `Título da notícia ${prevState.length + 1}`,
+          subtitle: `subtitulo da notícia ${prevState.length + 1}`,
+          likes: prevState.length * Math.floor(Math.random() * 10),
+        },
+      ]);
+    }, 2000);
+    // setPosts(POSTS);
+  }
+
   return (
     <>
       <Header>
         <h2>Posts da semana</h2>
+
+        <button onClick={handleRefresh}>Atualizar</button>
       </Header>
 
       <hr />
 
-      {POSTS.map((post, index) => (
+      {posts.map((post, index) => (
         <Post
           key={index}
           post={{ title: post.title, subtitle: post.subtitle }}
