@@ -34,7 +34,10 @@ export default function Post(props) {
   return (
     <>
       <article>
-        <strong>{props.post.title ? props.post.title : 'Sem título'}</strong>{' '}
+        <strong>
+          {props.post.title && <del>{props.post.title}</del>}
+          {!props.post.title && props.post.title}
+        </strong>{' '}
         <button type="button" onClick={() => props.onRemove(props.post.id)}>
           Remover
         </button>
@@ -43,7 +46,7 @@ export default function Post(props) {
           {props.post.subtitle ? props.post.subtitle : 'Sem subtítulo'}
         </small>
         <br />
-        Likes: {props.likes}
+        Likes: {props.post.likes}
       </article>
       <br />
     </>
@@ -51,11 +54,12 @@ export default function Post(props) {
 }
 
 Post.propTypes = {
-  likes: PropTypes.number.isRequired,
   post: PropTypes.shape({
     id: PropTypes.number,
     title: PropTypes.string,
     subtitle: PropTypes.string,
+    likes: PropTypes.number.isRequired,
+    read: PropTypes.bool.isRequired,
   }).isRequired,
   onRemove: PropTypes.func.isRequired,
 };

@@ -9,18 +9,28 @@ const POSTS = [
     title: 'Título da notícia',
     subtitle: 'subtitulo da notícia',
     likes: 20,
+    read: false,
   },
   {
     id: Math.random(),
     title: 'Outro título da notícia',
     subtitle: 'Outro subtitulo da notícia',
     likes: 30,
+    read: true,
   },
   {
     id: Math.random(),
     title: 'Mais um título da notícia',
     subtitle: 'Mais um subtitulo da notícia',
     likes: 40,
+    read: false,
+  },
+  {
+    id: Math.random(),
+    title: 'Último título da notícia',
+    subtitle: 'Último subtitulo da notícia',
+    likes: 50,
+    read: false,
   },
 ];
 
@@ -54,12 +64,7 @@ function App() {
       <hr />
 
       {posts.map((post) => (
-        <Post
-          key={post.id}
-          post={{ title: post.title, subtitle: post.subtitle, id: post.id }}
-          likes={post.likes}
-          onRemove={handleRemovePost}
-        />
+        <Post key={post.id} post={post} onRemove={handleRemovePost} />
       ))}
     </>
   );
