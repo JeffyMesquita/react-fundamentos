@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import PostHeader from './PostHeader';
 
 /**
  *
@@ -34,13 +35,15 @@ export default function Post(props) {
   return (
     <>
       <article>
-        <strong>
-          {props.post.title && <del>{props.post.title}</del>}
-          {!props.post.title && props.post.title}
-        </strong>{' '}
-        <button type="button" onClick={() => props.onRemove(props.post.id)}>
-          Remover
-        </button>
+        <PostHeader
+          post={{
+            title: props.post.title,
+            read: props.post.read,
+            id: props.post.id,
+          }}
+          onRemove={props.onRemove}
+          theme={props.theme}
+        />
         <br />
         <small>
           {props.post.subtitle ? props.post.subtitle : 'Sem subtítulo'}
@@ -62,4 +65,5 @@ Post.propTypes = {
     read: PropTypes.bool.isRequired,
   }).isRequired,
   onRemove: PropTypes.func.isRequired,
+  theme: PropTypes.string.isRequired,
 };

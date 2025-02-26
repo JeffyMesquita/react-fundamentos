@@ -1,7 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, createContext } from 'react';
 
 import Post from './Post';
 import Header from './Header';
+
+const ThemeContext = createContext('dark');
 
 const POSTS = [
   {
@@ -35,6 +37,8 @@ const POSTS = [
 ];
 
 function App() {
+  const [theme, setTheme] = useState('dark');
+
   const [posts, setPosts] = useState(POSTS);
 
   function handleRefresh() {
@@ -49,13 +53,21 @@ function App() {
     ]);
   }
 
+  function handleToggleTheme() {
+    setTheme((prevState) => (prevState === 'dark' ? 'light' : 'dark'));
+  }
+
   function handleRemovePost(postID) {
     setPosts((prevState) => prevState.filter((post) => post.id !== postID));
   }
 
   return (
-    <>
-      <Header>
+    <ThemeContext.Provider value={theme}>
+      <Header
+        title="JStack's Blog"
+        onToggleTheme={handleToggleTheme}
+        theme={theme}
+      >
         <h2>Posts da semana</h2>
 
         <button onClick={handleRefresh}>Atualizar</button>
@@ -64,9 +76,14 @@ function App() {
       <hr />
 
       {posts.map((post) => (
-        <Post key={post.id} post={post} onRemove={handleRemovePost} />
+        <Post
+          key={post.id}
+          post={post}
+          onRemove={handleRemovePost}
+          theme={theme}
+        />
       ))}
-    </>
+    </ThemeContext.Provider>
   );
 }
 
