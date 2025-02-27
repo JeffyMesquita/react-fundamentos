@@ -5,8 +5,6 @@ import { ThemeProvider } from './ThemeContext';
 import Post from './Post';
 import Header from './Header';
 
-import './index.css';
-
 const POSTS = [
   {
     id: Math.random(),

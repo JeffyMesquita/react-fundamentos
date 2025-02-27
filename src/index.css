@@ -5,3 +5,10 @@ body {
   padding: 0;
   color: #fff;
 }
+
+.title {
+  font-size: 2rem;
+  text-align: center;
+  margin-top: 2rem;
+  color: red;
+}
