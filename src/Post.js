@@ -42,7 +42,6 @@ export default function Post(props) {
             id: props.post.id,
           }}
           onRemove={props.onRemove}
-          theme={props.theme}
         />
         <br />
         <small>
@@ -65,5 +64,4 @@ Post.propTypes = {
     read: PropTypes.bool.isRequired,
   }).isRequired,
   onRemove: PropTypes.func.isRequired,
-  theme: PropTypes.string.isRequired,
 };

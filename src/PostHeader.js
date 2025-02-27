@@ -9,15 +9,12 @@ export default function PostHeader(props) {
         {props.post.title && <del>{props.post.title}</del>}
         {!props.post.title && props.post.title}
       </strong>{' '}
-      <Button onClick={() => props.onRemove(props.post.id)} theme={props.theme}>
-        Remover
-      </Button>
+      <Button onClick={() => props.onRemove(props.post.id)}>Remover</Button>
     </>
   );
 }
 
 PostHeader.propTypes = {
-  theme: PropTypes.string.isRequired,
   post: PropTypes.shape({
     id: PropTypes.number,
     title: PropTypes.string,

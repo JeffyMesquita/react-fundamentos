@@ -1,8 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { useTheme } from './ThemeContext';
 
 export default function Button(props) {
-  const theme = props.theme;
+  const { theme } = useTheme();
 
   return (
     <button
@@ -23,7 +24,6 @@ export default function Button(props) {
 }
 
 Button.propTypes = {
-  theme: PropTypes.string.isRequired,
   children: PropTypes.node,
   onClick: PropTypes.func.isRequired,
 };
