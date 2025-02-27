@@ -5,13 +5,19 @@ import Button from './Button';
 import { useTheme } from './ThemeContext';
 
 export default function Header(props) {
-  const { onToggleTheme } = useTheme();
+  const { onToggleTheme, theme } = useTheme();
   return (
-    <>
+    <div
+      style={{
+        backgroundColor: theme === 'dark' ? '#3339' : '#ccc9',
+        color: theme === 'dark' ? '#ccc' : '#333',
+        padding: '8px 12px',
+      }}
+    >
       <h1>{props.title}</h1>
       <Button onClick={onToggleTheme}>Toggle Theme</Button>
       {props.children}
-    </>
+    </div>
   );
 }
 
