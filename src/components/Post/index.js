@@ -5,6 +5,8 @@ import PostHeader from './PostHeader';
 
 import styles from './Post.scss';
 
+import { Rate, Subtitle } from './styles';
+
 /**
  *
  * @param {*} props - PostProps object with the post object and number of likes
@@ -45,12 +47,10 @@ export default function Post(props) {
         }}
         onRemove={props.onRemove}
       />
-      <br />
-      <small>
+      <Subtitle>
         {props.post.subtitle ? props.post.subtitle : 'Sem subtítulo'}
-      </small>
-      <br />
-      Likes: {props.post.likes}
+      </Subtitle>
+      <Rate>Likes: {props.post.likes}</Rate>
     </article>
   );
 }
