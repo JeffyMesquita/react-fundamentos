@@ -1,14 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Button from './Button';
+import Button from '../Button';
 
-import styles from './Header.scss';
-
-import { useTheme } from './ThemeContext';
+import { useTheme } from '../../context/ThemeContext';
 
 export default function Header(props) {
-  console.log(styles);
-
   const { onToggleTheme, theme } = useTheme();
   return (
     <div

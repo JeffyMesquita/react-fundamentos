@@ -1,11 +1,9 @@
 import React, { useState } from 'react';
 
-import { ThemeProvider } from './ThemeContext';
+import { ThemeProvider } from '../../context/ThemeContext';
 
-import Post from './Post';
-import Header from './Header';
-
-import './App.scss';
+import Post from '../Post';
+import Header from '../Header';
 
 const POSTS = [
   {
