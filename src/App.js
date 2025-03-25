@@ -14,6 +14,7 @@ const POSTS = [
     subtitle: 'subtitulo da notícia',
     likes: 20,
     read: false,
+    removed: true,
   },
   {
     id: Math.random(),
@@ -21,6 +22,7 @@ const POSTS = [
     subtitle: 'Outro subtitulo da notícia',
     likes: 30,
     read: true,
+    removed: false,
   },
   {
     id: Math.random(),
@@ -28,6 +30,7 @@ const POSTS = [
     subtitle: 'Mais um subtitulo da notícia',
     likes: 40,
     read: false,
+    removed: false,
   },
   {
     id: Math.random(),
@@ -35,6 +38,7 @@ const POSTS = [
     subtitle: 'Último subtitulo da notícia',
     likes: 50,
     read: false,
+    removed: false,
   },
 ];
 
@@ -54,7 +58,18 @@ function App() {
   }
 
   function handleRemovePost(postID) {
-    setPosts((prevState) => prevState.filter((post) => post.id !== postID));
+    setPosts((prevState) =>
+      prevState.map((post) => {
+        if (post.id === postID) {
+          return {
+            ...post,
+            removed: true,
+          };
+        }
+
+        return post;
+      })
+    );
   }
 
   return (

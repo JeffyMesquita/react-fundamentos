@@ -2,6 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import PostHeader from './PostHeader';
 
+import styles from './Post.scss';
+
 /**
  *
  * @param {*} props - PostProps object with the post object and number of likes
@@ -33,25 +35,22 @@ import PostHeader from './PostHeader';
 
 export default function Post(props) {
   return (
-    <>
-      <article>
-        <PostHeader
-          post={{
-            title: props.post.title,
-            read: props.post.read,
-            id: props.post.id,
-          }}
-          onRemove={props.onRemove}
-        />
-        <br />
-        <small>
-          {props.post.subtitle ? props.post.subtitle : 'Sem subtítulo'}
-        </small>
-        <br />
-        Likes: {props.post.likes}
-      </article>
+    <article className={props.post.removed ? styles.postDeleted : styles.post}>
+      <PostHeader
+        post={{
+          title: props.post.title,
+          read: props.post.read,
+          id: props.post.id,
+        }}
+        onRemove={props.onRemove}
+      />
       <br />
-    </>
+      <small>
+        {props.post.subtitle ? props.post.subtitle : 'Sem subtítulo'}
+      </small>
+      <br />
+      Likes: {props.post.likes}
+    </article>
   );
 }
 
@@ -62,6 +61,7 @@ Post.propTypes = {
     subtitle: PropTypes.string,
     likes: PropTypes.number.isRequired,
     read: PropTypes.bool.isRequired,
+    removed: PropTypes.bool.isRequired,
   }).isRequired,
   onRemove: PropTypes.func.isRequired,
 };
